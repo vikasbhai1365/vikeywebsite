@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Unit 1</title>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 50px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            background-color: rgba(26, 9, 9, 0.849);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        /* Add responsive styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark> Python Unit 1 Programs</mark></h1>
+    <p class="question"> 1.Write a program to swap two numbers without taking a
+        temporary variable.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+a=12
+b=13
+print("Before swapping ")
+print("a =",a)
+print("b =",b)
+
+a=a+b
+b=a-b
+a=a-b;
+
+print("After swapping ")
+print("a =",a)
+print("b =",b)
+
+    </div>
+
+    <p class="question"> 2.Write a program to display sum of two complex numbers.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        print("sum of two complex numbers")
+
+        num1=3+4j
+        num2=4+5j
+        ans=num1+num2
+
+        print("sum is :",ans)
+        
+
+    </div>
+    <p class="question"> 3.Write a program to create a byte type array, read, modify,
+        and display the elements of the array.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+n=5
+arr=bytes(n)
+print(arr)
+
+arr=bytes(3)
+print(arr)
+
+lst=[1,2,3,4]
+arr=bytes(lst)
+print(arr)
+        
+
+    </div>
+
+    <p class="question"> 4.Create a sequence of numbers using range datatype to
+        display 1 to 30, with an increment of 2.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+numbers=range(1,30,2)
+for num in numbers:
+    print(num)
+
+    </div>
+
+    <p class="question"> 5.Write a program to find out and display the common and
+        the non common elements in the list using membership
+        operators.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+list1=[2,4,6,8]
+list2=[2,3,6,7]
+commonElement=[]
+non_commonElement=[]
+match=False
+
+for val1 in list1:
+        if val1 in list2:
+            commonElement.append(val1)
+            match=True
+        if val1 not  in list2:
+             non_commonElement.append(val1)
+
+for val2 in list2:
+     if val2 not in list1:
+          non_commonElement.append(val2)
+            
+
+if(match==True):
+
+    print("Common Element : ",commonElement)
+    print("Non-Common Element : ",non_commonElement)
+
+    
+else:
+    print("value doesn't match.")
+        
+
+    </div>
+
+    <p class="question"> 6.Create a program to display memory locations of two
+        variables using id() function, and then use identity
+        operators two compare whether two objects are same or
+        not.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+var1=10
+var2=20
+print("Memory Location of var1 : ",id(var1))
+print("Memory Location of var2 : ",id(var2))
+        
+if var1 is var2:
+    print("var1 and var2 have same object.")
+else:
+    print("var1 and var2 have not same object.")
+        
+        # if we update the value of var2 to 10 
+        # then both variable will have same memory location 
+        # and object of var1 and var2 will be same
+
+
+print("\nAfter Updating")
+var2=10
+print("\nMemory Location of var2 : ",id(var2))
+        
+if var1 is var2:
+    print("var1 and var2 have same object.")
+else:
+    print("var1 and var2 have not same object.")
+
+    </div>
+
+    <p class="question"> 7.Write a program that evaluates an expression given by
+        the user at run time using eval() function. Example:
+        Enter and expression: 10+8-9*2-(10*2)
+        Result: -20.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+exp=input("Enter Epression :")
+result=eval(exp)
+print("Result is : ",result)
+
+    </div>
+
+    <p class="question"> 8.Write a python program to find the sum of even numbers
+        using command line arguments..</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+start=int(input("Enter starting value :"))
+end=int(input("Enter Ending value :"))
+even_total=0
+for n in range(start,end+1,1):
+    if(n%2 == 0):
+        even_total=even_total+n
+    
+print("sum of even number : ",even_total)
+        
+
+    </div>
+
+    <p class="question"> 9.Write a menu driven python program which perform the
+        following:
+        Find area of circle
+        Find area of triangle
+        Find area of square and rectangle
+        Find Simple Interest
+        Exit.( Hint: Use infinite while loop for Menu).</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        choice=0
+while(choice !=5):
+
+    print("\n1. Area of circle")
+    print("2. Area of triangle")
+    print("3. Area of square and rectangle")
+    print("4. Find simple interest")
+    print("5. Exit")
+
+    choice=int(input("Enter choice : "))
+
+
+    if(choice==1):
+        radius=float(input("Enter radius :"))
+        area=(3.14*radius*radius) 
+        print("\nArea of circle : ",area)  
+
+
+    elif(choice==2):
+        base=float(input("Enter base :"))
+        height=float(input("Enter height :"))
+        area=(base*height)/2
+        print("\nArea of triangle : ",area)  
+
+
+    elif(choice==3):
+        side=float(input("Enter side :"))
+        length=float(input("Enter length :"))
+        width=float(input("Enter width :"))
+        
+        area_square=side*side
+        area_rect=length*width
+        print("\nArea of square : ",area_square) 
+        print("Area of rectangle : ",area_rect) 
+         
+
+
+    elif(choice==4):
+        p_amt=float(input("Enter principal amount :"))
+        rate=float(input("Enter rate of interest :"))
+        n=int(input("Enter Duration :"))
+        si=(p_amt*rate*n)/100
+        print("\nSimple interest :",si)    
+
+
+
+    elif(choice==5):
+        exit()
+
+
+    else:
+        print("\n\nInvalid Choice !!!")
+    
+        
+    </div>
+
+    <p class="question"> 10.Write a program to assert the user enters a number
+        greater than zero.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+num=int(input("Enter Number :"))
+assert num>0
+
+print("Number is : ",num)        
+
+    </div>
+
+    <p class="question"> 11.Write a program to search an element in the list using
+        for loop and also demonstrate the use of “else” with for
+        loop.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+list1=["Papaya","Banana","Orange"]
+item="Banana"
+found=False
+
+for val in list1:
+    if val is item:
+       found=True
+       break
+
+
+if(found==True):
+    print("Item Found.")
+
+else:
+    print("Not Found.")
+   
+
+    </div>
+
+    <p class="question"> 12.Write a python program that asks the user to enter a
+        length in centimeters. If the user enters a negative
+        length, the program should tell the user that the entry is
+        invalid. Otherwise, the program should convert the
+        length to inches and print out the result. (2.54 = 1 inch).</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+cm=float(input("Enter length in centimeter :"))
+inch=0.0
+
+if(cm <=0 ):
+    print("Enter Positive length")
+
+else:
+    inch=cm/2.54
+    print("\ninches : ",inch)
+
+    </div>
+</body>
+</html>

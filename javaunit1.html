@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Unit 1</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 50px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            background-color: black;
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        /* Add responsive styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark> Java Unit 1 Programs</mark></h1>
+    <p class="question"> 1. Write a program to evaluate simple interest of a given principle, rate and
+        time.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;<br>
+        class SimInter<br>
+        {<br>
+        public static void main(String args[])<br>
+        {<br>
+        int amount,n;<br>
+        float rate,si;<br>
+        Scanner s=new Scanner(System.in);<br>
+        System.out.println("Enter principal amount :");<br>
+        amount=s.nextInt();<br>
+        System.out.println("Enter the rate of interest :");<br>
+        rate=s.nextFloat();<br>
+        System.out.println("Enter Time :");<br>
+        n=s.nextInt();<br>
+        si=(amount*rate*n)/100;<br>
+        System.out.println("Simple Interest is : "+si);<br>
+        }<br>
+        }<br>
+    </div>
+
+
+    <p class="question"> 2. A motor cycle dealer sells two-wheelers to his customer on loan, which is to be
+        repaid in 5 years. The dealer charges simple interest for the whole term on the
+        day of giving the loan itself. The total amount is then divided by 60(months) and
+        is collected as equated monthly instalment (EMI). Write a program to calculate
+        the EMI for a loan of Rs. X, where X is given from command line argument. Print
+        the EMI value in rupees.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;<br>
+        class FindEmi<br>
+        {<br>
+        public static void main(String args[])<br>
+        {<br>
+        int n;<br>
+        float rate;<br>
+        double amount,si,emi;<br>
+        amount=Integer.parseInt(args[0]);<br>
+        rate=Float.parseFloat(args[1]);<br>
+        n=60;<br>
+        si=(amount*rate*n)/100;<br>
+        amount=amount+si;<br>
+        emi=amount/n;<br>
+        System.out.println("Simple interest is :"+si);<br>
+        System.out.println("Total amount with interest is :"+amount);<br>
+        System.out.println("Emi is :"+emi);<br>
+        }<br>
+        }<br>
+    </div>
+
+
+
+
+    <p class="question"> 3. A car accessories shop assigns code 1 to seat covers, 2 to steering wheel covers ,
+        3 to car lighting and 4 for air purifiers. All other items have code 5 or more.
+        While selling the goods, a sales tax of 2% to seat covers ,3% to steering wheel
+        covers, 4% to car lighting, 2.5% to air purifiers and 1.2% for all other items is
+        charged. A list containing the product code and price is given for making a bill.
+        Write a java program using switch statements to prepare a bill.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;<br>
+
+        class Shop<br>
+        {<br>
+        public static void main(String args[])<br>
+        {<br>
+        float price;<br>
+        int productCode; <br>
+        double taxRate=0.0,tax,totalAmount;<br>
+        Scanner s=new Scanner(System.in);<br>
+        System.out.println("______________________________________");<br>
+        System.out.println("1. Seat Covers ");<br>
+        System.out.println("2. steering wheel covers ");<br>
+        System.out.println("3. car lighting");<br>
+        System.out.println("4. air purifiers.");<br>
+        System.out.println("5. Other Items");<br>
+        System.out.println("______________________________________");<br>
+        System.out.println("Enter productCode :");<br>
+        productCode=s.nextInt();<br>
+        System.out.println("Enter price :");<br>
+        price=s.nextFloat();<br>
+        switch(productCode)<br>
+        {<br>
+        case 1:<br>
+        taxRate=2.0d;<br>
+        break;<br>
+        case 2:<br>
+        taxRate=3.0d;<br>
+        break;<br>
+        case 3:<br>
+        taxRate=4.0d;<br>
+        break; <br>
+        case 4: <br>
+        taxRate=2.5d;<br>
+        break;<br>
+        case 5:<br>
+        taxRate=1.2d;<br>
+        break;<br>
+        default:<br>
+        System.out.println("Enter valid Product Code !");<br>
+        }<br>
+        tax=price*taxRate/100;<br>
+        totalAmount=price+tax;<br>
+        System.out.println("=========================================");<br>
+        System.out.println("Product Price : "+price);<br>
+        System.out.println("Tax Rate : "+taxRate);<br>
+        System.out.println("Total tax : "+tax);<br>
+        System.out.println("Total Amount : "+totalAmount);<br>
+        System.out.println("=========================================");<br>
+
+        }<br>
+        }<br>
+
+    </div>
+
+
+
+    <p class="question"> 4. Write a java program to scan 3 integer values from the command line argument
+        and display the maximum number using conditional operator.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        class FindMax<br>
+        {<br>
+        public static void main(String args[])<br>
+        {<br>
+        int a,b,c,max;<br>
+        a=Integer.parseInt(args[0]);<br>
+        b=Integer.parseInt(args[1]);<br>
+        c=Integer.parseInt(args[2]);<br>
+        max=(a>b)?((a>c)?a:c):((b>c)?b:c);<br>
+        System.out.println("Max is :"+max);<br>
+        }<br>
+        }<br>
+
+    </div>
+
+
+    <p class="question"> 5. Write a program to calculate the hypotenuse of right angled triangle when other
+        sides
+        of the triangle are given. (Hypotenuse = square root (x*x + Y *Y))
+
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.util.Scanner;<br>
+        class FindHypo<br>
+        {<br>
+        public static void main(String args[])<br>
+        {<br>
+        int x,y;<br>
+        double hypo;<br>
+        Scanner s=new Scanner(System.in);<br>
+        System.out.println("Enter two sides :");<br>
+        x=s.nextInt();<br>
+        y=s.nextInt();<br>
+        hypo=(x*x+y*y);<br>
+        hypo=Math.sqrt(hypo);<br>
+        System.out.println("Hypotenuse is : "+hypo);<br>
+        }<br>
+        }<br>
+
+    </div>
+
+
+    <p class="question"> 6. Write a program to calculate the area of square and rectangle by overloading
+        the area method.
+    </p><br>
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        class Area<br>
+        {<br>
+
+        int l,w,side;<br>
+        Area(int a,int b)<br>
+        {<br>
+        l=a;<br>
+        w=b;<br>
+        System.out.println("Area is Rectangle is : "+(l*w));<br>
+        }<br>
+        Area(int c)<br>
+        {<br>
+        side=c;<br>
+        System.out.println("Area of Square is : "+(side*side)); <br>
+        }<br>
+
+        public static void main(String args[])<br>
+        {<br>
+        Area a1=new Area(10,20);<br>
+        Area a2=new Area(10);<br>
+        }<br>
+        }<br>
+    </div>
+
+    <p class="question"> 7. Create a complex number class. The class should have a constructor and
+        methods to add, subtract and multiply two complex numbers and to return the
+        real and imaginary parts.
+    </p><br>
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        class Complex
+{
+	int real;
+    int image;
+	Complex()
+	{
+		
+	}
+   
+   Complex(int a,int b)
+   {
+	   real=a;
+	   image=b;
+   }
+   Complex add(Complex c1,Complex c2)
+   {
+	   Complex sum=new Complex();
+	   sum.real=c1.real+c2.real;
+	   sum.image=c1.image+c2.image;
+	   return sum;
+   }
+   Complex sub(Complex c1,Complex c2)
+   {
+	   Complex sub=new Complex();
+	   sub.real=c1.real-c2.real;
+	   sub.image=c1.image-c2.image;
+	   return sub;
+   }
+    Complex mul(Complex c1,Complex c2)
+   {
+	   Complex mul=new Complex();
+	   mul.real=c1.real*c2.real + c1.image*c2.image;
+	   mul.image=c1.real*c2.real - c1.image*c2.image;
+	   return mul;
+   }
+}
+class MainComplex
+{
+	public static void main(String args[])
+	{
+		Complex c1=new Complex(10,20);
+		Complex c2=new Complex(5,6);
+		Complex c3=new Complex();
+		c3=c3.add(c1,c2);
+		System.out.println("Sum :"+c3.real+"i"+c3.image);
+		c3=c3.sub(c1,c2);
+		System.out.println("Sub :"+c3.real+"i"+c3.image);
+		c3=c3.mul(c1,c2);
+		System.out.println("mul :"+c3.real+"i"+c3.image);
+	}
+}
+
+    </div>
+
+
+    <p class="question"> 8. A shop during festival season offers a discount 10% for purchase made up to
+        Rs.1,000,
+        12% for purchase value of Rs.1,000 or more up to Rs 1,500 and 15% for
+        purchase value
+        of Rs.1,500 or more. Write a program to implement the above scheme for a
+        given sales
+        and print out the sales and print out the sales value, discount and net amount
+        payable by
+        a customer. Create necessary methods and constructors.
+    </p><br>
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;
+        class AcceptData
+        {
+            int pvalue;
+            AcceptData(int pvalue)
+            {
+                this.pvalue=pvalue;
+            }
+        }
+        class Discount
+        {
+            public static void main(String args[])
+            {
+                int purchaseVal;
+                int discount;
+                int netAmount;
+                Scanner s1=new Scanner(System.in);
+                System.out.println("Enter purchase price :");
+                purchaseVal=s1.nextInt();
+                AcceptData a1=new AcceptData(purchaseVal);
+                if(purchaseVal<=1000 )
+                {
+                    discount=(a1.pvalue*10)/100;
+                    netAmount=a1.pvalue-discount;
+                    System.out.println("_________Shop Bill________");
+                    System.out.println("Total Amount :"+a1.pvalue);
+                    System.out.println("Discount Rate :"+10+"%");
+                    System.out.println("Discount :"+discount);
+                    System.out.println("Net Amount :"+netAmount);
+                    System.out.println("__________________________");
+        
+                }
+                else if(purchaseVal>=1000 && purchaseVal<1500)
+                {
+                    discount=(a1.pvalue*12)/100;
+                    netAmount=a1.pvalue-discount;
+                    System.out.println("_________Shop Bill________");
+                    System.out.println("Total Amount :"+a1.pvalue);
+                    System.out.println("Discount Rate :"+12+"%");
+                    System.out.println("Discount :"+discount);
+                    System.out.println("Net Amount :"+netAmount);
+                    System.out.println("__________________________");
+        
+                }
+                else 
+                {
+                    discount=(a1.pvalue*15)/100;
+                    netAmount=a1.pvalue-discount;
+                    System.out.println("_________Shop Bill________");
+                    System.out.println("Total Amount :"+a1.pvalue);
+                    System.out.println("Discount Rate :"+15+"%");
+                    System.out.println("Discount :"+discount);
+                    System.out.println("Net Amount :"+netAmount);
+                    System.out.println("__________________________");
+        
+                }
+            }
+        }
+    </div>
+
+
+    <p class="question"> 9. A bank gives 6.5% per annum interest on deposits made in that bank. Write a
+        program to calculate the total amount that a person will receive after the end of
+        5 years for a deposit of Rs.5000 for compound interest. Create necessary
+        methods and constructors too.
+    </p><br>
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;
+        import java.lang.Math;
+        class CompoundInterest
+        {
+            int deposit,time;
+            double rate,amount;
+            CompoundInterest(int d,double r,int t)
+            {
+                deposit=d;
+                rate=r;
+                time=t;
+            }
+            double calc()
+            {
+                amount=deposit*Math.pow((1+rate/100),time);
+                return amount;
+            }
+            
+            public static void main(String args[])
+            {   
+                int deposit=5000,time=5;
+                double rate=6.5;
+                double cInterest,totalAmount;
+                CompoundInterest c1=new CompoundInterest(deposit,rate,time);
+                totalAmount=c1.calc();
+                cInterest=totalAmount-deposit;
+                System.out.println("_______________________________");
+                System.out.println("Deposit:"+deposit);
+                System.out.println("Rate of Interest :"+rate);
+                System.out.println("Compound Interest is :"+cInterest);
+                System.out.println("_______________________________");
+        
+            }
+        }
+    </div>
+
+
+
+    <p class="question"> 10.Write a java program to display powers of 2 i.e. 2,4,8,16 etc up to 1024 using
+        bitwise operators.
+    </p><br>
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        class Bitwise
+{
+    public static void main(String args[]) {
+        int sum=1;
+		for(int i=1;i<=10;i++)
+		{
+			sum=sum << 1;
+			System.out.println(sum);
+
+		}
+    }
+}
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Unit 4</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 50px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            background-color: black;
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        @media only screen and (max-width: 600px) {
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+        h3{
+            font-size: 25px;
+            border: 2px solid black;
+            background-color: rgb(191, 26, 177);
+            text-align: center;
+            border-radius: 15px;
+        }
+        .instructbtn{
+
+            font-size: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(223, 63, 4, 0.832);
+        }
+        img{
+            height: 200px;
+            border: 2px solid black;
+            margin-top: 10px;
+        }
+        .html-container
+        {
+            border: 2px solid black;
+            background-color: rgba(226, 139, 216, 0.752);
+            border-radius: 20px;
+        }
+        .htmlcode-style
+        {
+            font-size: 20px;
+            text-align: center;
+            margin-top: -9px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark>Java Unit 4 Programs</mark></h1>
+    <p class="question">1. Write an application that starts two thread. First thread displays even numbers
+        in the range specified from the command line and second thread displays odd
+        numbers in the same range. Each thread waits for 300 milliseconds before
+        displaying the next numbers. The application waits for both the thread to finish
+        and then displays the message “Both threads completed”.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+       
+class EvenNumberPrinter implements Runnable {
+    int start;
+    int end;
+
+  public EvenNumberPrinter(int start, int end) {
+      this.start = start;
+      this.end = end;
+  }
+
+  public void run() {
+      for (int i = start; i <= end; i++) {
+          if (i % 2 == 0) {
+              System.out.println(Thread.currentThread().getName() + ": " + i);
+              try {
+                  Thread.sleep(300); // Wait for 300 milliseconds
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+          }
+      }
+  }
+}
+
+class OddNumberPrinter implements Runnable {
+    int start;
+    int end;
+
+  public OddNumberPrinter(int start, int end) {
+      this.start = start;
+      this.end = end;
+  }
+
+  public void run() {
+      for (int i = start; i <= end; i++) {
+          if (i % 2 != 0) {
+              System.out.println(Thread.currentThread().getName() + ": " + i);
+              try {
+                  Thread.sleep(300); // Wait for 300 milliseconds
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+          }
+      }
+  }
+}
+
+class Main
+{
+  public static void main(String[] args)
+  {
+      if (args.length != 2) {
+          System.out.println("Enter two parameter start and end.");
+          System.exit(0);
+      }
+
+      int start = Integer.parseInt(args[0]);
+      int end = Integer.parseInt(args[1]);
+
+      EvenNumberPrinter evnum=new EvenNumberPrinter(start,end);
+      OddNumberPrinter onum=new OddNumberPrinter(start,end);
+      
+      Thread evenThread = new Thread(evnum);
+      Thread oddThread = new Thread(onum);
+
+      evenThread.start();
+      oddThread.start();
+
+      System.out.println("Both threads completed");
+  }
+}
+
+    </div>
+
+
+    <p class="question">2. Write a program that create and starts five threads. Each thread is instantiated
+        from the same class. It executes a loop with ten iterations. Each iteration
+        displays the character 'x' and sleep for 500 milliseconds. The application waits
+        for all threads to complete and then display a message ‘hello’. </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        class MultiThread implements Runnable
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println(Thread.currentThread().getName()+"  X");
+			
+			try
+			{
+				Thread.sleep(300);
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+	}
+}
+
+class Main
+{
+	public static void main(String args[])
+	{
+		for(int i=0;i<5;i++)
+		{
+			MultiThread mt=new MultiThread();
+			Thread thread=new Thread(mt);
+			thread.start();
+		}
+		try
+		{
+			Thread.sleep(5000);
+		}
+		catch(InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("Hello");
+	}
+}
+    </div>
+
+
+    <p class="question">3. Write a java program to create 2 threads each thread calculates the sum and
+        average of 1 to 10 and 11 to 20 respectively. After all thread finish, main thread
+        should print message “ Task Completed”. Write this program with use of
+        runnable interface.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+    
+        class Mythread1 implements Runnable
+{
+	int sum=0,avg=0;
+	public void run()
+	{
+		for(int i=1;i<=10;i++)
+		{
+			sum=sum+i;
+		}
+		
+		avg=sum/10;
+		System.out.println("Sum of 1 to 10 is : "+sum);
+		System.out.println("Average of 1 to 10 is : "+avg);
+		
+	}
+}
+
+class Mythread2 implements Runnable
+{
+	int sum=0,avg=0;
+	public void run()
+	{
+		for(int i=11;i<=20;i++)
+		{
+			sum=sum+i;
+		}
+		avg=sum/10;
+		System.out.println("Sum of 11 to 20 is : "+sum);
+		System.out.println("Average of 11 to 20 is : "+avg);
+		
+	}
+}
+
+class Main
+{
+	public static void main(String args[])
+	{
+		Mythread1 m1=new Mythread1();
+		Mythread2 m2=new Mythread2();
+		
+		Thread thread1=new Thread(m1);
+		Thread thread2=new Thread(m2);
+		
+		thread1.start();
+		thread2.start();
+		
+		try
+		{
+			Thread.sleep(2000);
+		}
+		catch(InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("Task Completed");
+		
+	}
+}
+    </div>
+
+
+
+    <p class="question">4. Create two thread. One thread print ‘fybca’ 4 times and another thread print
+        ‘sybca’ 6 times. Set priority for both thread and when thread finished print
+        ‘tybca’ from main.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        class Mythread1 implements Runnable
+{
+	public void run()
+	{
+		for(int i=0;i<4;i++)
+		{
+			System.out.println("fybca");
+			try
+			{
+				Thread.sleep(300);
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+}
+class Mythread2 implements Runnable
+{
+	public void run()
+	{
+		for(int i=0;i<6;i++)
+		{
+			System.out.println("sybca");
+			try
+			{
+				Thread.sleep(300);
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+class Main
+{
+	public static void main(String args[])
+	{
+		Mythread1 m1=new Mythread1();
+		Mythread2 m2=new Mythread2();
+		
+		Thread thread1=new Thread(m1);
+		Thread thread2=new Thread(m2);
+		
+		thread1.start();
+		thread2.start();
+		
+		try
+		{
+			Thread.sleep(3000);
+		}
+		catch(InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("\ntybca");
+		
+	}
+}
+    </div>
+
+
+
+    <p class="question">5. Create an applet which draws a line, rectangle and filled circle in applet display
+        area.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.applet.*;
+import java.awt.*;
+
+public class Myapplet extends Applet
+{
+	public void paint(Graphics g)
+	{
+		g.setColor(Color.blue);
+		g.drawLine(50,50,200,50);
+		g.drawRect(50,90,80,100);
+		g.fillOval(50,210,80,80);
+	}
+}
+
+<div class="html-container">
+<p class="htmlcode-style"><mark>Html Code</mark></p>
+     &lt;applet code="test.class" codeBase="" width=300 height=400&gt;&lt;/applet&gt;
+   
+</div>
+<h2>Instructions For Execution :</h2>
+<p>step 1: create a java file.
+example : myapplet.java</p>
+<p>step 2: your classname must be same as filename.
+
+example : class myapplet
+    {
+        //statements
+    }
+</P>
+<p>step 3: create a html file.
+
+    Example : index.html
+</p>
+
+<p>step 4: Now run the  main program.
+
+    example : 
+
+                javac myapplet.java
+                appletviewer index.html
+                
+</p>
+</div>
+
+    <p class="question">6. Write applets to draw the following shapes.
+        a. cone
+        b. cylinder
+        c. cube</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.applet.Applet;
+import java.awt.*;
+
+public class coneapplet extends Applet {
+    public void paint(Graphics g) {
+        int[] xPoints = {150, 250, 250};
+        int[] yPoints = {150, 150, 350};
+
+        // Draw the base of the cone
+        g.setColor(Color.GRAY);
+        g.fillPolygon(xPoints, yPoints, 3);
+
+        // Draw the sides of the cone
+        g.setColor(Color.ORANGE);
+       g.fillArc(150, 85, 100, 130, 0, 180);
+    }
+}
+
+
+
+import java.applet.Applet;
+import java.awt.*;
+
+public class cubeapplet extends Applet {
+    public void paint(Graphics g) {
+        // Draw the front face of the cube
+        g.setColor(Color.RED);
+        g.drawRect(100, 100, 100, 100);
+
+        // Draw the top face of the cube
+        g.setColor(Color.GREEN);
+        g.drawRect(100, 50, 100, 50);
+
+        // Draw the side face of the cube
+        g.setColor(Color.BLUE);
+        g.drawRect(200, 100, 50, 100);
+    }
+}
+
+
+import java.applet.Applet;
+import java.awt.*;
+
+public class cylinderapplet extends Applet {
+    public void paint(Graphics g) {
+        // Draw the top circle
+        g.setColor(Color.CYAN);
+        g.drawOval(50, 100, 200, 100);
+
+        // Draw the bottom circle
+        g.setColor(Color.CYAN);
+        g.drawOval(50, 300, 200, 100);
+
+        // Draw the sides of the cylinder
+        g.setColor(Color.BLUE);
+        g.drawRect(50, 150, 200, 200);
+    }
+}
+
+
+
+<div class="html-container">
+    <p class="htmlcode-style"><mark>Html Code</mark></p>
+         &lt;applet code="coneapplet.class" width=300 height=400&gt;&lt;/applet&gt;
+         &lt;applet code="cubeapplet.class" width=300 height=400&gt;&lt;/applet&gt;
+         &lt;applet code="cylinderapplet.class" width=300 height=400&gt;&lt;/applet&gt;
+
+    </div>
+
+
+    </div>
+
+
+    <p class="question">7. Write an applet that take 2 numbers as parameter and display their average and
+        sum.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.applet.Applet;
+        import java.awt.*;
+        
+        public class u4p7 extends Applet {
+            String str1, str2;
+        
+            public void init() {
+                setBackground(Color.red);
+                setForeground(Color.blue);
+                str1 = getParameter("a1");
+                str2 = getParameter("a2");
+            }
+        
+            public void paint(Graphics g) {
+                int n1 = Integer.parseInt(str1);
+                int n2 = Integer.parseInt(str2);
+                int sum = n1 + n2;
+                int avg = sum / 2;
+        
+                g.drawString("Sum is: " + sum, 50, 100);
+                g.drawString("Average is: " + avg, 50, 200);
+            }
+        }
+
+        <div class="html-container">
+            <p class="htmlcode-style"><mark>Html Code</mark></p>
+                 &lt;applet code="u4p7.class" width=300 height=400>
+                 &lt;param Name="a1" value="10">
+                 &lt;param Name="a2" value="20"&gt;
+                 &lt;/applet&gt;
+               
+            </div>
+    </div>
+
+    
+    <p class="question">8. Write a Java applet that draws a circle centred in the centre of
+        the applet. The radius of the circle should be passed as a parameter.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.applet.*;
+import java.awt.*;
+public class u4p8 extends Applet
+{
+	int radius;
+	public void init()
+	{
+		String paramRadius=getParameter("radius");
+		try
+		{
+			radius=Integer.parseInt(paramRadius);
+		}
+		catch(NumberFormatException e)
+		{
+			radius=50; // default radius
+		}
+	}
+	public void paint(Graphics g)
+	{
+		int width=getSize().width;
+		int height=getSize().height;
+		
+		int centerx=width/2;
+		int centery=height/2;
+		
+		g.drawOval(centerx-radius,centery-radius,2*radius,2*radius);
+	}
+}
+
+<div class="html-container">
+    <p class="htmlcode-style"><mark>Html Code</mark></p>
+         &lt;applet code="u4p8.class" width=300 height=400
+         &lt;param name="radius" value="100">
+         &lt;/applet&gt;
+       
+    </div>
+
+    </div>
+
+
+    <p class="question">9. Write an applet that draw a circle divided in 6 equal parts.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.applet.*;
+        import java.awt.*;
+        
+        public class u4p9 extends Applet {
+            public void paint(Graphics g) {
+                int width = getSize().width;
+                int height = getSize().height;
+                int centerX = width / 2;
+                int centerY = height / 2;
+                int radius = (width < height ? width : height) / 2 - 10;
+        
+                g.drawOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+        
+                int numLines = 6;
+                int angleIncrement = 360 / numLines;
+        
+                for (int i = 0; i < numLines; i++) {
+                    double angle = Math.toRadians(i * angleIncrement);
+                    int x1 = centerX + (int) (radius * Math.cos(angle));
+                    int y1 = centerY + (int) (radius * Math.sin(angle));
+                    int x2 = centerX - (x1 - centerX);
+                    int y2 = centerY - (y1 - centerY);
+                    g.drawLine(centerX, centerY, x1, y1);
+                    g.drawLine(centerX, centerY, x2, y2);
+                }
+            }
+        }
+        
+<div class="html-container">
+<p class="htmlcode-style"><mark>Html Code</mark></p>
+     &lt;applet code="u4p9.class" width="400" height="400"&gt;&lt;/applet&gt;
+   
+</div>
+
+</div>
+
+
+
+    <p class="question">10. Write an applet that draw a rectangle divided in 5 equal parts.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.applet.*;
+        import java.awt.*;
+        
+        public class u4p10 extends Applet {
+            public void paint(Graphics g) {
+               
+               g.drawRect(100,100,180,100);
+               g.drawLine(100,120,280,120);
+               g.drawLine(100,140,280,140);
+               g.drawLine(100,160,280,160);
+               g.drawLine(100,180,280,180);
+               
+            }
+        }
+
+        <div class="html-container">
+            <p class="htmlcode-style"><mark>Html Code</mark></p>
+                 &lt;applet code="u4p10.class" width=300 height=400&gt;&lt;/applet&gt;
+               
+            </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Unit 2</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 50px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            background-color: black;
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        @media only screen and (max-width: 600px) {
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark>Java Unit 2 Programs</mark></h1>
+    <p class="question">1. Write a program to sort the elements of a one-dimensional array. Read the value of
+        array elements through command-line argument.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+    
+            class SortArray {
+                public static void main(String args[]) {
+                    int temp;
+                    int arr[] = new int[5];
+                    for (int i = 0; i < 5; i++) {
+                        arr[i] = Integer.parseInt(args[i]);
+                    }
+                    for (int i = 0; i < 5; i++) {
+                        System.out.println(arr[i]);
+                    }
+                    System.out.println("_______________________");
+                    System.out.println("Sorted Array Elements :");
+                    for (int i = 0; i < 5; i++) {
+                        for (int j = i + 1; j < 5; j++) {
+                            if (arr[j] < arr[i]) {
+                                temp = arr[j];
+                                arr[j] = arr[i];
+                                arr[i] = temp;
+                            }
+                        }
+                        System.out.println(arr[i]);
+                    }
+                    System.out.println("_______________________");
+                }
+            }
+       
+    </div>
+
+    <p class="question">2.Write a program to create an array to store 5 integer values. Also initialize the
+        array with 5 numbers and display the array Elements in reverse order.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;
+        class Reverse
+        {
+            public static void main(String args[])
+            {
+                Scanner sc=new Scanner(System.in);
+                int arr[]=new int[5];
+                System.out.println("Enter 5 Elements :");
+                for(int i=0;i<5;i++)
+                {
+                    arr[i]=sc.nextInt();
+                }
+                System.out.println("_______________________");
+                System.out.println("Reverse Array Elements :");
+                for(int i=4;i>=0;i--)
+                {
+                    
+                    System.out.println(arr[i]);
+                    
+                }
+                System.out.println("_______________________");
+        
+            }
+        }
+             
+    </div>
+    <p class="question">3.Write a program to find sum of two matrices of 3 x3.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.*;
+        class MatrixSum
+        {
+            public static void main(String args[])
+            {
+                
+                int arr[][]=new int[3][3];
+                int arr1[][]=new int[3][3];
+                Scanner sc=new Scanner(System.in);
+                System.out.println("Enter first matrix :");
+                for(int i=0;i<3;i++)
+                {
+                    for(int j=0;j<3;j++)
+                    {
+                    arr[i][j]=sc.nextInt();
+                    }
+                }
+                System.out.println("Enter second matrix :");
+        
+                for(int i=0;i<3;i++)
+                {
+                    for(int j=0;j<3;j++)
+                    {
+                     arr1[i][j]=sc.nextInt();
+        
+                    }
+                }
+                
+                System.out.println("Sum of matrix :");
+                for(int i=0;i<3;i++)
+                {
+                    for(int j=0;j<3;j++)
+                    {
+                        System.out.print(arr[i][j]+arr1[i][j] + "\t");
+                    }
+                       System.out.println();
+                }
+            }
+        }  
+    </div>
+
+
+    <p class="question">4.Write program to create an array of company name and another array of price
+        quoted by the company. Fetch the company name who has quoted the lowest
+        amount.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        
+            import java.util.Scanner;
+            
+            class Company {
+
+                public static void main(String args[]) {
+
+                    int lowestPrice,minIndex = 0;
+                    Scanner sc = new Scanner(System.in);
+                    String CNames[] = new String[5];
+                    int CPrice[] = new int[5];
+
+                    System.out.println("Enter Five Company Name :");
+
+                    for (int i = 0; i < 5; i++) {
+                        System.out.println("Enter Company Name :");
+                        CNames[i] = sc.next();
+                        System.out.println("Enter price :");
+                        CPrice[i]=sc.nextInt();
+                    }
+                    lowestPrice = CPrice[0];
+
+                    for (int i = 0; i < 5; i++) {
+                        if (CPrice[i] < lowestPrice) {
+                            lowestPrice = CPrice[i];
+                            minIndex = i;
+                        }
+                    }
+
+                    System.out.println("________________________________");
+                    System.out.println("Lowest Amount :" + lowestPrice);
+                    System.out.println("Lowest amount Company name :" + CNames[minIndex]);
+                    System.out.println("________________________________");
+                }
+            }
+    </div>
+
+
+    <p class="question">5.Write an interface called numbers, with a method in Process(int x, int y). Write a
+        class called Sum, in which the method Process finds the sum of two numbers
+        and returns an int value. Write another class called Average, in which the
+        Process method finds the average of the two numbers and returns an int.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        
+        import java.util.Scanner;
+        interface Numbers
+        {
+            int process(int x,int y);
+        }
+        class Sum implements Numbers
+        {
+            public int process(int x,int y)
+            {
+                return x+y;
+            }
+        }
+        class Avg implements Numbers
+        {
+            public int process(int x,int y)
+            {
+                return (x+y)/2;
+            }
+        }
+        class MainInterface
+        {
+            public static void main(String args[])
+            {
+                int x,y;
+                Scanner sc=new Scanner(System.in);
+                System.out.println("Enter two Numbers :");
+                x=sc.nextInt();
+                y=sc.nextInt();
+                Numbers n1;
+                Sum s1=new Sum();
+                Avg a1=new Avg();
+                n1=s1;
+                System.out.println("____________________________");
+                System.out.println("Sum :"+n1.process(x,y));
+                n1=a1;
+                System.out.println("Average :"+n1.process(x,y));
+                System.out.println("____________________________");
+        
+            }
+        }
+    </div>
+
+
+    <p class="question">6. Create a class called NumberData that accept any array of the five numbers.
+        Create a sub class called Numplay which provides methods for followings:
+        1. Display numbers entered.
+        2. Sum of the number.
+        3. Average of the numbers.
+        4. Maximum of the numbers.
+        5. Minimum of the numbers.
+        Create a class that provides menu for above methods. Give choice from the
+        command-line argument.
+        
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        
+        import java.util.Scanner;
+        class NumberData
+        {
+            int arr[]=new int[5];
+            Scanner sc=new Scanner(System.in);
+            void acceptNumber()
+            {
+                System.out.println("Enter Five numbers :");
+                for(int i=0;i<5;i++)
+                {
+                    arr[i]=sc.nextInt();
+                }
+            }
+        }
+        class Numplay extends NumberData
+        {
+            int sum=0,max,min;
+            double avg=0.0;
+            void display()
+            {
+               System.out.println("__________________________");
+               System.out.println("Numbers are :");
+               
+                for(int i=0; i < 5;i++)
+                {
+                    System.out.println(arr[i]);
+                }
+                
+                System.out.println("__________________________");
+            }
+            
+            void sumNumber()
+            {
+                for(int i=0;i<5;i++)
+                {
+                    sum=sum+arr[i];
+                }
+                System.out.println("__________________________");
+                System.out.println("Sum is :"+sum);
+                System.out.println("__________________________");
+               
+        
+            }
+            void average()
+            {
+                avg=sum/arr.length;
+                System.out.println("__________________________");
+                System.out.println("Average is :"+avg);
+                System.out.println("__________________________");
+               
+        
+            }
+            void findMax()
+            {
+                max=arr[0];
+                for(int i=0;i<5;i++)
+                {
+                    if(max < arr[i])
+                    {
+                        max=arr[i];
+                    }
+                }
+                System.out.println("__________________________");
+                System.out.println("Maximum Number is :"+max);
+                System.out.println("__________________________");
+               
+            }
+            void findMin()
+            {
+                min=arr[0];
+                for(int i=0;i<5;i++)
+                {
+                    if(min>arr[i])
+                    {
+                        min=arr[i];
+                    }
+                }
+                System.out.println("__________________________");  
+                System.out.println("Minimum Number is :"+min);
+                System.out.println("__________________________");
+               
+            }
+        }
+        class MainClass 
+        {
+            public static void main(String args[])
+            {
+                Numplay n1=new Numplay();
+                n1.acceptNumber();
+                int choice;
+                Scanner sc=new Scanner(System.in);
+                do
+                {
+                System.out.println("__________________________");
+                System.out.println("1. Display Numbers");
+                System.out.println("2. Sum Of The Numbers");
+                System.out.println("3. Average Of The Numbers");
+                System.out.println("4. Maximum Number");
+                System.out.println("5. Minimum Number");
+                System.out.println("6. Exit");
+                   System.out.println("__________________________");
+                System.out.println("Enter Choice :");
+                choice=sc.nextInt();
+                
+                switch(choice)
+                {
+                    case 1: n1.display();
+                            break;
+                    
+                    case 2:n1.sumNumber();
+                            break;
+                    
+                    case 3:n1.average();
+                            break;
+                    
+                    case 4:n1.findMax();
+                            break;
+                    
+                    case 5:n1.findMin();
+                            break;
+                    
+                    case 6:
+                            break;
+                    
+                    default:System.out.println("Invalid Choice");
+                }
+                }while(choice!=6);
+        
+            }
+        }
+       </div>
+    </div>
+
+
+
+    <p class="question">7. Declare an abstract class Vehicle with an abstract method named numWheels(
+        ).provide subclasses Car and Truck that each implements this method. Create
+        instance of these subclasses and demonstrate the use of this method.
+        
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        
+        abstract class Vehicle
+{
+	abstract void numWheels();
+}
+class Car extends Vehicle
+{
+	void numWheels()
+	{
+		System.out.println("Car has four Wheels");
+	}
+}
+class Truck extends Vehicle
+{
+	void numWheels()
+	{
+		System.out.println("Truck has six Wheels");
+	}
+}
+class Demo
+{
+	public static void main(String args[])
+	{
+		Car c1=new Car();
+		Truck t1=new Truck();
+		c1.numWheels();
+		t1.numWheels();
+	}
+}
+    </div>
+    
+
+    <p class="question">8. Write an interface called Exam with a method Pass(int mark) that returns a
+        Boolean. Write another interface called Classify with a method Division(int
+        average) which returns a string. Write a class called Result which implements
+        both Exam and Classify. The pass method should return true if the marks is
+        greater than or equal to 35 else false. The division method must return “First”
+        when the parameter average is 60 or more, “second” when average is 50 or
+        more but below 60, “no division” when average is less than 50.
+        
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;
+
+        interface Exam
+        {
+             boolean pass(int marks);
+            
+        }
+        interface Classify
+        {
+             String division(int average);
+        }
+        class Result implements Exam,Classify
+        {
+            public boolean pass(int marks)
+            {
+                if(marks>=35)
+                return true;
+            return false;
+            }
+            public String division(int average)
+            {
+                if(average>=60)
+                {
+                    return "first";
+                }
+                else if(average>=50 && average<60)
+                {
+                    return "Second";
+                }
+                else
+                {
+                    return "No Division";
+                }
+                    
+            }
+        }
+        class Main
+        {
+            public static void main(String args[])
+            {
+                Scanner sc=new Scanner(System.in);
+                Result r1=new Result();
+                int marks;
+                int avg=0,sum=0;
+                System.out.println("Enter marks :");
+                marks=sc.nextInt();
+                System.out.println(r1.pass(marks));
+                System.out.println(r1.division(marks));
+        
+        
+            }
+        }  
+        
+    </div>
+
+
+    <p class="question">9. Create class calculation with an abstract method area( ). Create Rectangle and
+        Triangle subclasses of calculation and find area of rectangle and triangle.
+        
+        
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        abstract class Calculation
+{
+	abstract void area();
+}
+class Rect extends Calculation
+{
+	int length,width;
+	Rect(int l,int w)
+	{
+		length=l;
+		width=w;
+	}
+	public void area()
+	{
+		System.out.println("Area of rectangle is :"+(length*width));
+	}
+}
+
+
+class Triangle extends Calculation
+{
+	int base,height;
+	
+	Triangle(int b,int h)
+	{
+		base=b;
+		height=h;
+	}
+	public void area()
+	{
+		System.out.println("Area of Triangle is :"+(0.5*base*height));
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		Rect r1=new Rect(10,20);
+		Triangle t1=new Triangle(10,20);
+		r1.area();
+		t1.area();
+	}
+}
+        
+    </div>
+
+
+    <p class="question">10. The abstract Vegetable class has four subclasses named cabbage, carrot and
+        potato. Write an application that demonstrates how to establish this class
+        hierarchy. Declare one instance variable of type string that indicates the color of
+        a vegetable. Create and display instances of these object. Override the toString()
+        method of object to return a string with the name of the vegetable and its color.
+    </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        abstract class Vegetable
+        {
+              String color,name;
+             public String toString()
+             {
+                 return getClass()+"Color:"+color;
+             }
+        }
+        class Cabbage extends Vegetable
+        {  
+               public String toString()
+                {
+                    return getClass()+" ,Color :"+color;
+                }
+        }
+        class Carrot extends Vegetable
+        {  
+               public String toString()
+                {
+                    return getClass()+" ,Color :"+color;
+                }
+        }
+        class Potato extends Vegetable
+        {  
+               public String toString()
+                {
+                    return getClass()+" ,Color :"+color;
+                }
+        }
+        class Main
+        {
+            public static void main(String args[])
+            {
+                Cabbage c1=new Cabbage();
+                Carrot c2=new Carrot();
+                Potato p1=new Potato();
+                
+                c1.color="Green";
+                c2.color="Red";
+                p1.color="White";
+                
+                System.out.println(c1.toString());
+                System.out.println(c2.toString());
+                System.out.println(p1.toString());
+                
+            }
+        }
+        
+        
+    </div>
+</body>
+
+</html>

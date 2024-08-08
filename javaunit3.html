@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Unit 3</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 50px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            background-color: black;
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        @media only screen and (max-width: 600px) {
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+        h3{
+            font-size: 25px;
+            border: 2px solid black;
+            background-color: rgb(191, 26, 177);
+            text-align: center;
+            border-radius: 15px;
+        }
+        .instructbtn{
+
+            font-size: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(223, 63, 4, 0.832);
+        }
+        img{
+            height: 200px;
+            border: 2px solid black;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark>Java Unit 3 Programs</mark></h1>
+    <p class="question">1. Create a package P and within that package create class PackClass which have
+        method called findmax() which find maximum value from three numbers. Now
+        import the package within another class DemoClass and now display the
+        maximum number.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        <h3> Package p</h3>
+
+        package p;
+
+public class ClassFile1
+{
+	int n1=2,n2=4,n3=6;
+	public void findMax()
+	{
+		if(n1>n2 && n1>n3)
+		{
+			System.out.println(n1+" is greater.");
+		}
+		if(n2>n1 && n2>n3)
+		{
+			System.out.println(n2+" is greater.");
+		}
+		else
+		{
+			System.out.println(n3+" is greater.");
+		}
+	}
+}
+<h3>Here we will Access the package</h3>
+
+import p.ClassFile1;
+
+class DemoClass
+{
+	public static void main(String args[])
+	{
+		ClassFile1 p=new ClassFile1();
+		p.findMax();
+	}
+}
+
+
+<button class="instructbtn">Instructions</button>
+<div class="instructdiv">
+   Step 1: Create folder p .
+   Step 2: Save the package file that will be same as class name.
+   Step 3: Create another file outside the package folder.That will be a main file.
+
+   <img src="https://i.ibb.co/nDshvNB/p1.png" alt="p1" border="0">
+</div>
+    </div>
+
+    <p class="question">2.Write a program that creates three different classes in three different packages
+        and access them from default package. All the three packages should be at the
+        same level.</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        <h3> Package pack1</h3>
+        package pack1;
+
+public class mypack1
+{
+	public void showfile1()
+	{
+		System.out.println("Pack 1");
+	}
+}
+<h3> Package pack2</h3>
+package pack2;
+
+public class mypack2
+{
+public void showfile2()
+{
+System.out.println("Pack 2");
+}
+}
+<h3> Package pack3</h3>
+package pack3;
+
+public class mypack3
+{
+public void showfile3()
+{
+System.out.println("Pack 3");
+}
+}
+<h3> Here we will access all of the packages.</h3>
+import pack1.mypack1;
+import pack2.mypack2;
+import pack3.mypack3;
+
+class ShowClass
+{
+	public static void main(String args[])
+	{
+		mypack1 p1=new mypack1();
+		mypack2 p2=new mypack2();
+		mypack3 p3=new mypack3();
+		p1.showfile1();
+		p2.showfile2();
+		p3.showfile3();
+		
+	}
+
+}
+<img src="https://i.ibb.co/RyX67C7/p2.png" alt="p2" border="0">
+    </div>
+
+    <p class="question">3. Create package pack1 within this package create class A which contains one
+        instance variable and one instance method. Create another package pack2
+        within this package create class B. where class B is calling the method and
+        variable of class A .</p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        <h3> Package pack1</h3>
+        package mypack1;
+
+        public class A {
+            
+            public int l;
+            public int w;
+            public int rect(int l,int w)
+            {
+                return l*w;
+            }
+            
+        }
+        <h3> Package pack2</h3>
+        package mypack2;
+        import mypack1.A;
+        
+        public class B {
+            
+            public static void show()
+            {
+                
+                A a = new A();
+                int result = a.rect(10,20);
+                System.out.println("Area of rect : "+result);
+        
+            }
+            
+        }
+
+        <h3>Here we will access packages.</h3>
+        import mypack2.B;
+
+        class Main
+        {
+            
+            public static void main(String[] args) 
+            {
+                 B.show();
+            }
+            
+        }
+        
+        <img src="https://i.ibb.co/R779Bz7/p3.png" alt="p3">
+
+    </div>
+
+    <p class="question">4. Write a program that accepts a string from command line and perform following
+        operations:
+        1. Display each character on separate line in reverse order.
+        2. Count total number of chracters and display each character's position too.
+        3. Identify that whether the string is palindrom or not.
+        4. Count total number of uppercase and lowercase characters in it.
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+
+        import java.util.Scanner;
+
+ class StringOperations {
+	 
+        public static void main(String[] args) 
+		{
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String mystring = sc.next();
+
+        // 1. Display each character on a separate line in reverse order
+		int n=mystring.length();
+		
+        System.out.println("Characters in reverse order:");
+        for (int i = n-1; i >= 0; i--) {
+            System.out.println(mystring.charAt(i));
+        }
+		
+        // 2. Count total number of characters and display each character's position
+		
+        System.out.println("\nTotal number of characters: " +n);
+        System.out.println("Character positions:");
+        for (int i = 0; i < n; i++) {
+            System.out.println(mystring.charAt(i) + ": " + (i + 1));
+        }
+
+        // 3. Identify whether the string is a palindrome or not
+        boolean isPalindrome = true;
+        for (int i = 0; i < n / 2; i++) 
+		{
+            if (mystring.charAt(i) != mystring.charAt(n - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+		
+        if (isPalindrome)
+		{
+            System.out.println("\nThe string is a palindrome.");
+        }
+		else 
+		{
+            System.out.println("\nThe string is not a palindrome.");
+        }
+
+        // 4. Count total number of uppercase and lowercase characters
+        int uppercaseCount = 0, lowercaseCount = 0;
+        for (int i = 0; i < n; i++)
+		{
+            char ch = mystring.charAt(i);
+            if (Character.isUpperCase(ch))
+			{
+                uppercaseCount++;
+            }
+			else if (Character.isLowerCase(ch)) 
+			{
+                lowercaseCount++;
+            }
+        }
+        System.out.println("\nUppercase characters count: " + uppercaseCount);
+        System.out.println("Lowercase characters count: " + lowercaseCount);
+    }
+}
+    </div>
+
+    
+    <p class="question">5. Write a Java program to input n integer numbers and display lowest and second
+        lowest number. Also handle the different exceptions possible to be thrown
+        during execution. 
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import java.util.Scanner;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+
+class LowestNumbers {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        int[] numbers;
+
+        try {
+            System.out.print("How many numbers you want to enter : ");
+            n = sc.nextInt();
+            if (n <= 1) {
+                System.out.println("Please enter a valid positive integer greater than 1.");
+                return;
+            }
+
+            numbers = new int[n];
+            System.out.println("Enter " + n + " integer numbers:");
+
+            for (int i = 0; i < n; i++) {
+                numbers[i] = sc.nextInt();
+            }
+
+            Arrays.sort(numbers);
+
+            int lowest = numbers[0];
+			int secondLowest=numbers[1];
+
+            System.out.println("Lowest number: " + lowest);
+            System.out.println("Second lowest number: " + secondLowest);
+
+        } 
+		catch (InputMismatchException e) 
+		{
+            System.out.println("Input should be an integer.");
+        } 
+		catch (Exception e) 
+		{
+            System.out.println("Some Error");
+        } 
+    }
+}
+
+
+    </div>
+
+     
+    <p class="question">6.Write a program that takes a string from the user and validate it. The string
+        should be at least 5 characters and should contain at least one digit. Display an
+        appropriate valid message.
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+
+    <div class="ans">
+        import java.util.Scanner;
+
+        class Validation {
+            public static void main(String args[]) {
+                int noOfDigit = 0;
+                String str;
+                Scanner sc = new Scanner(System.in);
+
+                System.out.println("Enter a String :");
+                str = sc.nextLine();
+
+                for (int i = 0; i < str.length(); i++) {
+                    if (Character.isDigit(str.charAt(i))) {
+                        noOfDigit++;
+                    }
+                }
+
+                if (str.length() < 5 || noOfDigit == 0) {
+                    System.out.println("Invalid String, at least 5 characters and 1 digit must be.");
+                } 
+                else {
+                    System.out.println("Valid String");
+                }
+            }
+        }
+    </div>
+
+    <p class="question">7.Write an application that accepts marks of three different subject from user.
+        Marks should be between 0 to 100, if marks of any of the subject is not belong
+        to this range, generate custom exception out of RangeException. If marks of
+        each subjects are greater than or equal to 40 then display message “PASS” along
+        with percentage, otherwise display message “FAIL”. Also write exception
+        handling code to catch all the possible runtime exceptions likely to be generated
+        in the program.
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+
+    <div class="ans">
+        import java.util.*;
+class RangeException extends Exception
+{
+	RangeException(String message)
+	{
+		super(message);
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int marks1=0,marks2=0,marks3=0;
+		
+   try{
+		System.out.println("Enter marks of three subjects :");
+		marks1=sc.nextInt();
+	    marks2=sc.nextInt();
+		marks3=sc.nextInt();
+		if((marks1 > 100 || marks1 < 0)||(marks2 > 100 || marks2 < 0)||(marks3 > 100 || marks3 < 0))
+		{
+			throw new RangeException("Enter marks between(0-100).");
+		}
+		else if((marks1 > 40)&&(marks2 > 40)&&(marks3 > 40))
+		{
+			System.out.println("Congratulations , You are Passed");
+			
+		}
+		else
+		{
+			System.out.println("Sorry , You are Failed");	
+		}
+		int totalmarks=marks1+marks2+marks3;
+		System.out.println("totalmarks :"+totalmarks);
+		double per=(double)totalmarks/3;
+		System.out.println("Percentage :"+per+"%");
+			
+	   }
+	
+	catch(InputMismatchException e)
+	{
+		System.out.println("Here ,Input mismatch occured.");
+			
+	}
+	catch(RangeException e)
+	{
+		System.out.println(e.getMessage());
+	}
+	catch(Exception e)
+	{
+		System.out.println("Some Error.");
+			
+	}
+	}
+} 
+
+
+    </div>
+
+    <p class="question">8.Write a program which takes the age of 5 persons from command line and find
+        the average age of all persons. The program should handle exception if the
+        argument is not correctly formatted and custom exception if the age is not
+        between 1 to 100.
+        
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+
+    <div class="ans">
+        class RangeException extends Exception
+{
+	RangeException(String Message)
+	{
+		super(Message);
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		int ages[]=new int[5];
+		int avg=0,totalage=0;
+	try
+	{
+		for(int i=0;i<5;i++)
+		{
+			ages[i]=Integer.parseInt(args[i]);
+			if(ages[i] < 0 || ages[i] > 100)
+			{
+				throw new RangeException("Enter age between (0-100).");
+			}
+		    totalage=totalage + ages[i];
+		}
+		avg=totalage/5;
+		System.out.println("Average of age is :"+avg);
+		
+	}
+	catch(ArrayIndexOutOfBoundsException e)
+	{
+		System.out.println(" Array index is out of bound.");
+		
+	}
+	catch(RangeException e)
+	{
+		System.out.println(e.getMessage());
+	}
+	catch(Exception e)
+	{
+		System.out.println("Some Error.");
+	}
+		
+	}
+	
+}
+    </div>
+
+
+    <p class="question">9.Write an application that converts between meters and feet. Its first commandline argument is a number and second command line argument is either
+        "centimeter" or "meter". If the argument equals "centimeter" displays a string
+        reporting the equivalent number of meters. If this argument equals "meters",
+        display a string reporting the equivalent number of centimeter. If unit is not
+        given properly then generate custom exception Unitformatexception. If first
+        argument is not proper format then generate numberformatexception.
+        Generate other exception as per requirements. (1 meter=100 centimeter)
+        
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+
+    <div class="ans">
+        class Unitformatexception extends Exception
+{
+	Unitformatexception(String message)
+	{
+		super(message);
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		double number,cm=0,m=0;
+		String str;
+	try
+	{
+		number=Integer.parseInt(args[0]);
+		str=args[1];
+		if(!str.equalsIgnoreCase("centimeter") && !str.equalsIgnoreCase("meter"))
+		{
+			throw new Unitformatexception("Enter second argument either centimeter or meter.");
+		}
+		else if(str .equalsIgnoreCase("centimeter"))
+		{
+			m=number/100;
+			System.out.println(number+" Centimeter to meter is : "+m);
+		}
+		else if(str .equalsIgnoreCase("meter"))
+		{
+			cm=number*100;
+			System.out.println(number+" Meter to Centimeter is : "+cm);
+		}
+	}
+	catch(ArrayIndexOutOfBoundsException e)
+	{
+		System.out.println("Here ,Array Index Out of Bound Occured.");
+		
+	}
+	catch(Unitformatexception e)
+	{
+		System.out.println(e.getMessage());
+		
+	}
+	catch(Exception e)
+	{
+		System.out.println("Some Error.");
+		
+	}
+	}
+}
+    </div>
+
+    <p class="question">10.Write a program that accepts 5 even numbers from command line , if any of the
+        numbers is odd then throw custom exception OddException and count such
+        invalid numbers.
+        
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+
+    <div class="ans">
+        class OddException extends Exception
+{
+	OddException(String message)
+	{
+		super(message);
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		int arr[]=new int[5];
+		int evencount=0;
+		int oddcount=0;
+		try
+		{
+			for(int i=0;i<5;i++)
+			{
+				arr[i]=Integer.parseInt(args[i]);
+				
+				if(arr[i] % 2 == 0)
+				{
+					evencount++;
+				}
+				else
+				{
+					oddcount++;
+					throw new OddException("Invalid number ,Odd numbers are not allowed here.");
+				}
+			}
+			if(evencount==5)
+			{
+				System.out.println("All numbers are valid");
+				
+			}
+			System.out.println("Even Numbers :"+evencount);
+			System.out.println("Odd Numbers :"+oddcount);
+				
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println("Here ,Array index out of bound exception occured.");
+				
+		}
+		catch(OddException e)
+		{
+			oddcount++;
+			System.out.println(e.getMessage());
+				
+		}
+		catch(Exception e)
+		{
+			System.out.println("Some Error.");
+				
+		}
+		
+	}
+}
+    </div>
+
+</body>
+
+</html>
