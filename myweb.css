@@ -45,6 +45,9 @@ a:link, a:visited {
     font-weight:bold;
     border-radius: 90px;
     margin-top: 20px;
+    width:120px;
+    align-items: center;
+    margin-left: 5px;
   }
   
   a:hover, a:active {
