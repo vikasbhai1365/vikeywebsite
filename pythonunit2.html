@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Unit 2</title>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 120px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            background-color: rgba(26, 9, 9, 0.849);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        /* Add responsive styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark> Python Unit 1 Programs</mark></h1>
+    <p class="question"> 1.Write a program to create one array from another array.
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        import array as arr
+        myarray=arr.array('i',[1,2,3,4,5])
+        arr2=myarray
+        print("first array is : ",myarray)
+        print("Second array is : ",arr2)
+    </div>
+
+    <p class="question"> 2.Create a program to retrieve, display and update only a
+        range of elements from an array using indexing and
+        slicing in arrays
+    </p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    import array as arr
+
+myarray=arr.array('i',[1,2,3,4,5])
+print(myarray)
+
+# update
+myarray[2]=20
+print("After Updating \n")
+print(myarray)
+
+#slicing
+print(myarray[1:4])
+    </div>
+<p class="question"> 3.Write a program to understand various methods of array
+    class mentioned: append, insert, remove, pop, index,
+    tolist and count.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    import array as arr
+
+    myarray=arr.array('i',[1,2,3,7,5,1,2,1,3])
+    
+    #display
+    print(myarray)
+    
+    #apppend
+    myarray.append(20)
+    print("After appending  :",myarray)
+    
+    #insert
+    myarray.insert(4,60)
+    print("After inserting index no 4 value to 60 : ",myarray)
+    
+    #remove
+    myarray.remove(2)
+    print("After removing  2 : ",myarray)
+    
+    #pop
+    myarray.pop(3)
+    print("After poping index no 3 :",myarray)
+    
+    #index
+    print("Index of 20 is : ",myarray.index(20))
+    
+    #count
+    print("3 comes in array : ",myarray.count(3))
+    
+    #tolist    -- it is used to make array to list
+    print("Array to list : ",myarray.tolist())
+    
+</div>
+<p class="question"> 4.Write a program to sort the array elements using bubble
+    sort technique.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    import array as arr
+
+    myarray=arr.array('i',[4,2,3,1])
+    n=len(myarray)
+    print("Before sorting :",myarray)
+    
+    for i in range(n-1):
+        for j in range(0,n-i-1):
+            if(myarray[j]>myarray[j+1]):
+                myarray[j],myarray[j+1]=myarray[j+1],myarray[j]
+    
+    print("After Sorting :",myarray)
+</div>
+<p class="question"> 5.Create a program to search the position of an element in
+    an array using index() method of array class.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    import array as arr
+
+    myarray=arr.array('i',[4,3,6,2,9])
+    
+    element=int(input("Enter search element :"))
+    print("index is :",myarray.index(element))
+</div>
+<p class="question"> 6.Write a program to generate prime numbers with the
+    help of a function to test prime or not.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    def check_num(num):
+    if num > 1:
+        is_prime = True  
+        for i in range(2, num):
+            if num % i == 0:
+                print("Not a prime number.")
+                is_prime = False 
+                break
+        if is_prime:  # if is_prime==True
+            print("This is a prime number.")  
+    else:
+        print("Enter a number greater than 1")
+
+num = int(input("Enter number for checking: "))
+check_num(num)
+
+</div>
+
+<p class="question"> 7.Write a python program that removes any repeated items
+    from a list so that each item appears at most once. For
+    instance, the list [1,1,2,3,4,3,0,0] would become
+    [1,2,3,4,0].
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    List1=[1,2,4,0,1,0,1,0]
+    List2=[]
+    for val in List1:
+        if val not in List2:
+            List2.append(val)
+    print("Actual List :",List1)
+    print("After Removing repeated item :",List2)
+</div>
+<p class="question"> 8.Write a program to pass a list to a function and display
+    it.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    def my_fun(mylist):
+    print("List is :",mylist)
+
+mylist=[1,2,3,4,5]
+my_fun(mylist)
+</div>
+<p class="question"> 9.Write a program to demonstrate the use of Positional
+    argument, keyword argument and default arguments.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    # example of positional aruments
+
+    def display_name(name1,name2,name3):
+        print("name1 is :",name1)
+        print("name2 is :",name2)
+        print("name3 is :",name3)
+    
+    #example of keyword arguments
+    def display_sub(java,python,html):
+        print("Subject 1 is : ",java)
+        print("Subject 2 is : ",python)
+        print("Subject 3 is : ",html)
+    
+    #example of Default arguments
+    def display_marks(mark1,mark2,mark3=85):
+        print("Mark 1 is : ",mark1)
+        print("Mark 2 is : ",mark2)
+        print("Mark 3 is : ",mark3)
+    
+    
+    #here we will call the functions
+    
+    #for positional arguments
+    name1="Vikas"
+    name2="Tirth"
+    name3="Nilesh"
+    display_name(name1,name2,name3)
+    
+    #for keyword arguments
+    sub1="Python"
+    sub2="java"
+    sub3="Html"
+    display_sub(java=sub1,html=sub3,python=sub2)
+    
+    #for default arguments
+    mark1=90
+    mark2=80
+    mark3=70
+    display_marks(mark1,mark2) # intead of mark3 the default value will be print
+</div>
+<p class="question"> 10.Write a program to show variable length argument and
+    its use.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    def my_fun(*names):
+    n=len(names)
+    for i in range(0,n):
+        print(names[i])
+my_fun("Vikas","Tirth","Vansh","Nilesh") #here we can pass multiple values
+</div>
+<p class="question"> 11.Write a lambda/Anonymous function to find bigger
+    number in two given numbers.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    val=lambda a,b:max(a,b)
+    max_val=val(20,30)
+    print("Maximum value : ",max_val)
+</div>
+<p class="question"> 12.Create a decorator function to increase the value of a
+    function by 3.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    def my_fun(number):
+    def add_three(number):
+        return number + 3  # It adds 3
+    result = add_three(number)  # Calls the inner function
+    return result
+
+#here we will call the main function
+print(my_fun(10)) 
+
+# Output: 13
+
+</div>
+<p class="question"> 13.Create a program name “employee.py” and implement
+    the functions DA, HRA, PF, and ITAX. Create another
+    program that uses the function of employee module and
+    calculates gross and net salaries of an employee.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    <h2><mark>employee.py file</mark></h2>
+
+    def DA(basic_salary):
+    #10% of the basic salary
+    return basic_salary*0.10
+
+def HRA(basic_salary):
+    # 15% of the basic salary
+    return basic_salary*0.15
+
+def PF(basic_salary):
+    #12% of the basic salary
+    return basic_salary*0.12
+
+def ITAX(gross_salary):
+    #10% of gross salary
+    if gross_salary>50000:
+        return  gross_salary*0.10
+    else:
+        return 0.0
+    
+
+
+<h2><mark>main.py file</mark></h2>
+
+import employee
+
+def calculate_gross_salary(basic_salary):
+    da=employee.DA(basic_salary)
+    hra=employee.HRA(basic_salary)
+    gross_salary=basic_salary+da+hra
+    return gross_salary
+
+def calculate_net_salary(basic_salary):
+    pf=employee.PF(basic_salary)
+
+    gross_salary=calculate_gross_salary(basic_salary)
+    itax=employee.ITAX(gross_salary)
+
+    net_salary=gross_salary-(pf+itax)
+    return net_salary
+
+#here we will call the functions
+basic_salary=float(input("Enter Basic Salary :"))
+gross_salary=calculate_gross_salary(basic_salary)
+net_salary=calculate_net_salary(basic_salary)
+
+
+print("Gross Salary : %.2f "%gross_salary)
+print("Net Salary    : %.2f"%net_salary)
+</div>
+<p class="question"> 14.Write a program to create a list using range functions
+    and perform append, update and delete elements
+    operations in it.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    mylist=[]
+    for val in range(1,20,2):
+        mylist.append(val)
+    
+    print("List is :",mylist)
+    
+    #update
+    mylist.insert(1,55)
+    print("After update List is :",mylist)
+    
+     #delete
+    mylist.remove(1)
+    print("After deleting first element",mylist)
+    
+</div>
+<p class="question"> 15.Write a program to combine two List, perform repetition
+    of lists and create cloning of lists.    
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    list1=[5,4,7,3,9,12]
+    list2=[13,17,8,5,1]
+    
+    print("List 1 :",list1)
+    print("List 2 :",list2)
+    
+    #combine
+    list3=list1+list2
+    print("List3 is :",list3)
+    
+    #repeation
+    repeated_list=list1*2
+    print("Repeated List :",repeated_list)
+    
+    #cloning
+    clone_list=list(list1)
+    print("Clone list :",clone_list)
+    
+</div>
+<p class="question"> 16.Create a sample list of 7 elements and implement the
+    List methods mentioned: append, insert, copy, extend,
+    count, remove, pop, sort, reverse and clear.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    List1=[1,2,3,4,5,6,7]
+    print("Actual List : ",List1)
+    
+    #append
+    List1.append(8)
+    print("List1 after appended : ",List1)
+    
+    #insert
+    List1.insert(1,9)
+    print("insert 9 at index 1 :",List1)
+    
+    #copy
+    List2=List1.copy()
+    print("Copy of list1 is list2 : ",List2)
+    
+    #extend
+    List3=['v','i','k','a','s']
+    List1.extend(List3)
+    print("List1 after extended by list3 : ",List1)
+    
+    #count
+    print("count of 2 in list1 : ",List1.count(2))
+    
+    #remove
+    List1.remove('s')
+    print("After removing s from list1 : ",List1)
+    
+    #pop
+    List1.pop()
+    print("After pop one element from list1 : ",List1)
+    
+    #sort
+    List2.sort()
+    print("After Sorting List2 : ",List2)
+    
+    #reverse
+    List1.reverse()
+    print("Reverse of List1 :",List1)
+    
+    #clear
+    List1.clear()
+    print("After clear the list1 : ",List1)
+</div>
+<p class="question"> 17.Write a program to create nested list and display its
+    elements.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    List1=[[1,2,3,4],['a','b','c','d']]
+    for sublist in List1:
+        for val in sublist:
+            print(val)
+</div>
+<p class="question"> 18.Write a program to accept elements in the form of a tuple
+    and display its minimum, maximum, sum and average.
+    
+    print("Maximum : ",max(tpl_ele))
+    print("Minimum : ",min(tpl_ele))
+    print("Sum     : ",sum(tpl_ele))
+    print("Average : ",sum(tpl_ele)/len(tpl_ele))
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+
+</div>
+<p class="question"> 19.Create a program to sort tuple with nested tuples.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    tpl = ((3, 'apple'), (1, 'banana'), (4, 'orange'), (2, 'mango'))
+    sorted_tpl=tuple(sorted(tpl,key=lambda x:(x[1])))
+    print(sorted_tpl)
+</div>
+<p class="question"> 20.Write a program to create a dictionary from the user and
+    display the elements.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    my_dict={
+        'name':"Vikas",
+        'age':21
+    }
+    
+    print("Name : ",my_dict['name'])
+    print("Age  : ",my_dict['age'])
+</div>
+<p class="question"> 21.Create a dictionary that will accept cricket players name
+    and scores in a match. Also we are retrieving runs by
+    entering the player’s name.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    my_dict={
+        'Virat':100,
+        'Rohit':50,
+        'Surya':40,
+        'Rahul':70
+    }
+    name=input("Enter name :")
+    if name in my_dict:
+        print(name+" scored : ",my_dict[name])
+    else:
+        print(name+" is not in dictinary")
+</div>
+<p class="question"> 22.Write a program to convert the elements of two lists into
+    key-value pairs of a dictionary.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    List1=['name','age','gender']
+    List2=['vikas','21','male']
+    combine_dict=dict(zip(List1,List2))
+    print(combine_dict)
+</div>
+<p class="question"> 23.Create a python function to accept python function as a
+    dictionary and display its elements.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    def display_fun(my_dict):
+    if not my_dict:
+        print("Dist is empty !")
+    else:
+        for key,value in my_dict.items():
+            print(key+" = ",value)
+
+my_dict={
+    'Virat':100,
+    'Rohit':50,
+    'Surya':40,
+    'Rahul':70
+}
+display_fun(my_dict)
+</div>
+
+</body>
+</html>
