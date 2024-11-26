@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Unit 3</title>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+            font-size: 35px;
+
+        }
+
+        .question {
+            /* gap: 20px; */
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: rgb(87, 226, 233);
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: black;
+            margin-top: 120px;
+        }
+
+        .ans {
+            border: 15px solid rgb(218, 22, 156);
+            font-weight: bold;
+            /* background-color: rgba(26, 9, 9, 0.849); */
+            background-color: #1f1f1f;
+            padding: 10px;
+            margin: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+            border-radius: 8px;
+            color: white;
+            gap: 10px;
+            white-space: pre-wrap;
+            border-left-color: rgb(49, 51, 162);
+            border-right-color: rgb(49, 51, 162);
+
+            /* Preserve line breaks in code blocks */
+        }
+
+        h3{
+            color:rgb(227, 18, 53);
+            font-size: 30px;
+        }
+
+        /* Add responsive styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+
+            .question,
+            .ans {
+                margin: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1><mark> Python Unit 3 Programs</mark></h1>
+    <p class="question"> 1.Write a program to create a Student class with name,
+        age and marks as data members. Also create a method
+        named display() to view the student details. Create an
+        object to Student class and call the method using the
+        object.
+        </p><br>
+
+    <mark>Program :</mark><br><br>
+    <div class="ans">
+        class Student:
+    name="Vikas Rawat"
+    age=21
+    marks=550
+
+    def display(self):
+        print("Name  : ",self.name)
+        print("Age : ",self.age)
+        print("Marks : ",self.marks)
+
+S1=Student()
+S1.display()
+
+
+    </div>
+
+    <p class="question"> 2.Write a program to create Student class with a
+        constructor having more than one parameter.
+    </p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    class Student:
+    def __init__(self,name,age,marks):
+        self.name=name
+        self.age=age
+        self.marks=marks
+
+    def display(self):
+        print("Name  : ",self.name)
+        print("Age : ",self.age)
+        print("Marks : ",self.marks)
+
+S1=Student('Vikas',21,550)
+S1.display()
+</div>
+
+<p class="question"> 3.Write a program to demonstrate the use of instance and
+    class/static variables.
+    
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Employee:
+    company_name='Nexa'   # static / class  variable
+
+    def __init__(self,name,age,salary):
+        self.name=name       #instance variable
+        self.age=age
+        self.salary=salary
+
+    def displaycompany():
+        print("Company name is : ",Employee.company_name)
+    
+    def displayEmp(self):
+        print("Name is :",self.name)
+        print("Age is :",self.age)
+        print("Salary is :",self.salary)
+
+E1=Employee('Pankaj',22,30000)
+E1.displayEmp()      
+
+Employee.displaycompany()
+
+
+</div>
+
+<p class="question"> 4.Write a program to store data into instances using
+    mutator methods and to retrieve data from the instances
+    using accessor methods.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Student:
+    
+    #Mutator method
+    def getdetails(self,name,age,marks):  
+        self.name=name
+        self.age=age
+        self.marks=marks
+
+    #Accessor method
+    def showDetails(self):
+        print("Name : ",self.name)
+        print("Age : ",self.age)
+        print("Marks : ",self.marks)
+
+
+#creating Object of class        
+S1=Student()
+
+name=input("Enter name :")
+age=input("Enter age :")
+marks=input("Enter marks :")
+S1.getdetails(name,age,marks)
+S1.showDetails()
+</div>
+
+<p class="question"> 5.Write a program to use class method to handle the
+    common features of all the instance of Student class.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Student:
+    
+    college_name='P D Pandya college'
+
+    def __init__(self,name,semester):
+        self.name=name
+        self.semester=semester
+    
+    def showStudent(self):
+        print("Name : ",self.name)
+        print("Semester : ",self.semester)
+
+    @classmethod
+    def showCollege(Student):
+        print("College : ",Student.college_name)
+
+
+    @classmethod
+    def setCollege(Student):
+        Student.college_name='Gujrat University'
+
+
+S1=Student('Vikas Rawat',5)
+S1.showStudent()
+Student.showCollege()
+
+#change the college name
+Student.setCollege()
+Student.showCollege()
+</div>
+
+<p class="question"> 6.Write a program to create a static method that counts
+    the number of instances created for a class.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Myclass:
+    instance_count=0
+
+    def __init__(self):
+        Myclass.instance_count+=1
+
+    @staticmethod
+    def Showcount():
+        print("Total Instance created is : ",Myclass.instance_count)
+
+M1=Myclass()
+M2=Myclass()
+
+Myclass.Showcount()
+</div>
+
+<p class="question"> 7.Create a Bank class with two variables name and
+    balance. Implement a constructor to initialize the
+    variables. Also implement deposit and withdrawals
+    using instance methods.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Bank:
+
+    def __init__(self,name,balance):
+        self.name=name
+        self.balance=balance
+
+    def deposit(self,amount):
+        self.balance+=amount
+        print("Amount Deposited : ",amount)
+        print("Tota Balance : ",self.balance)
+
+    def  withdrawal(self,amount):
+        if(amount  > self.balance):
+            print("Low Balance  Alert !!!")
+
+        else:
+            self.balance-=amount
+            print("Withrawal Amount : ",amount)
+            print("Tota Balance : ",self.balance)
+B1=Bank("State Bank Of India",50000)
+B1.deposit(20000)
+B1.withdrawal(40000)
+
+</div>
+
+<p class="question"> 8.Write a program to create a Emp class and make all the
+    members of the Emp class available to another class
+    (Myclass). [By passing members of one class to another.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Employee:
+    def __init__(self,name,salary):
+        self.name=name
+        self.salary=salary
+    
+class Myclass:
+    
+    @staticmethod
+    def showdetails(E):
+        print("Name : ",E.name)
+        print("Salary : ",E.salary)
+
+E1=Employee('Tirth','5000')
+
+M1=Myclass()
+M1.showdetails(E1)
+        
+</div>
+
+<p class="question"> 9.Create a Student class to with the methods set_id,
+    get_id, set_name, get_name, set_marks and get_marks
+    where the method name starting with set are used to
+    assign the values and method name starting with get are
+    returning the values. Save the program by student.py.
+    Create another program to use the Student class which
+    is already available in student.py.
+    
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+<h3>student.py file program</h3>
+class Student:
+    def set_id(self,id):
+        self.id=id
+    def get_id(self):
+        return self.id
+    def set_name(self,name):
+        self.name=name
+    def get_name(self):
+        return self.name
+    def set_marks(self,marks):
+        self.marks=marks
+    def get_marks(self):
+        return self.marks
+    
+   
+    <h3> this is main.py file</h3>
+    <h3>here we will import student.py file</h3>
+
+
+    from student import Student
+
+    s1=Student()
+    s1.set_id(111)
+    print("Id : ",s1.get_id())
+    s1.set_name("Vikas")
+    print("Name : ",s1.get_name())
+    s1.set_marks(500)
+    print("Marks : ",s1.get_marks())
+    
+    
+
+</div>
+
+<p class="question"> 10.Write a program to access the base class constructor
+    from a sub class by using super() method and also
+    without using super() method.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Base:
+    def __init__(self,name):
+        self.name=name
+
+# using super() method
+class Child1(Base):
+    def __init__(self,name,age):
+        super().__init__(name)
+        self.age=age
+
+    def display(self):
+        print("Name : ",self.name)
+        print("Age : ",self.age)
+
+# without using super() mehod
+class child2(Base):
+    
+    def __init__(self, name,age):
+        Base.__init__(name)
+        self.age=age
+
+
+C1=Child1("Vikas",21)
+C1.display()
+</div>
+
+<p class="question"> 11.Write a program to override super class constructor and
+    method in sub class.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Vehicle:
+    def __init__(self,brand):
+        self.brand=brand
+
+    def showDetails(self):
+        print("Brand Name : ",self.brand)
+
+
+class Car(Vehicle):
+    def __init__(self, brand,model):
+        super().__init__(brand)
+        self.model=model
+    
+    def showDetails(self):
+        super().showDetails()
+        print("Model Name : ",self.model)
+
+
+C1=Car("Nexa","Scorpio")
+C1.showDetails()
+</div>
+
+<p class="question"> 12.Write a program to implement single inheritance in
+    which two sub classes are derived from a single base
+    class.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Person:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    
+    def ShowDetails(self):
+        print("Name : ",self.name)
+        print("Age  : ",self.age)
+
+class Student(Person):
+    def __init__(self, name, age,r_no):
+        super().__init__(name, age)
+        self.r_no=r_no
+
+    def ShowDetails(self):
+        super().ShowDetails()
+        print("Roll No : ",self.r_no)
+
+class Teacher(Person):
+    def __init__(self, name, age,subject):
+        super().__init__(name, age)
+        self.subject=subject
+
+    def ShowDetails(self):
+        super().ShowDetails()
+        print("Subject : ",self.subject)
+
+S1=Student('Vikas',21,117)
+T1=Teacher('Monali Patel',31,'CO')
+
+S1.ShowDetails()
+T1.ShowDetails()
+</div>
+
+<p class="question"> 13.Write a program to implement multiple inheritance
+    using two base classes.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    # First Base Class
+class Engine:
+        def __init__(self, engine_type):
+            self.engine_type = engine_type
+    
+    # Second Base Class
+    class Wheels:
+        def __init__(self, number_of_wheels):
+            self.number_of_wheels = number_of_wheels
+    
+    # Derived Class
+    class Vehicle(Engine, Wheels):
+        def __init__(self, engine_type, number_of_wheels, vehicle_type):
+            Engine.__init__(self, engine_type)
+            Wheels.__init__(self, number_of_wheels)
+            self.vehicle_type = vehicle_type
+    
+        def show_details(self):
+           print("Vehicle Type : ",self.vehicle_type)
+           print("No of Wheels : ",self.number_of_wheels)
+           print("Engine Type : ",self.engine_type)
+           
+    
+    # Create an object of the derived class
+    car = Vehicle("Petrol", 4, "Car")
+    
+    print(car.show_details())
+    
+</div>
+
+<p class="question"> 14.Write a program to understand the order of execution of
+    methods in several base classes according to method
+    resolution order (MRO).
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class A(object):
+    def show(self):
+        print("This is class A.")
+
+class B(object):
+    def show(self):
+        print("This is class B.")
+
+class C(object):
+    def show(self):
+        print("This is class C.")
+
+class X(A, B):
+    def show(self):
+        print("This is class X.")
+        super().show()  
+
+class Y(B, C):
+    def show(self):
+        print("This is class Y.")
+        super().show()  
+
+# Create an object of class Y and call its show method
+obj1 = Y()
+obj1.show()
+
+print(Y.mro())
+
+</div>
+
+<p class="question"> 15.Write a program to check the object type to know
+    whether the method exists in the object or not.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Student:
+    def studentDetails(self):
+        print("This is student class method.")
+    
+class Teacher:
+    def techerDetails(self):
+        print("This is teacher class method.")
+
+def check_method(obj,method_name):
+    if hasattr(obj,method_name):
+        print(" this object has method name ,",method_name)
+    else:
+        print("Method not found .")
+
+S1=Student()
+T1=Teacher()
+
+check_method(S1,"studentDetails")
+</div>
+
+<p class="question"> 16.Write a program to overload the addition operator (+) to
+    make it act on the class objects.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class BookX:
+    def __init__(self,pages):
+        self.pages=pages
+    def __add__(self,other):
+        return self.pages+other.pages
+    
+class BookY:
+    def __init__(self,pages):
+        self.pages=pages
+
+B1=BookX(200)
+B2=BookY(100)
+B3=B1+B2 
+print("Total Pages : ",B3)
+</div>
+
+<p class="question"> 17.Write a program to show method overloading to find sum
+    of two or three numbers.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+class Myclass:
+    def sum(self,a=None,b=None,c=None):
+        if(a!=None and b!=None and c!=None):
+            print("Sum of three numbers : ",(a+b+c))
+        elif(a!=None and b!=None):
+            print("Sum of two numbers : ",(a+b))
+        else:
+            print("Enter 2 or 3 numbers.")
+
+M1=Myclass()
+M1.sum(10,20,30)
+M1.sum(20,30)
+</div>
+
+<p class="question"> 18.Write a program to override the super class method in
+    subclass.
+</p><br>
+
+<mark>Program :</mark><br><br>
+<div class="ans">
+    import math
+    class Square:
+        def area(self,x):
+            print("Area of Square is : ",(x*x))
+        
+    class Circle(Square):
+        def area(self, x):
+            print("Area is Circle is : %.2f"%(math.pi*x*x))
+    
+    C1=Circle()
+    C1.area(2)
+</div>
+
+</body>
+</html>
